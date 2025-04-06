@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Coffee aur Tweet
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Welcome to our Twitter Application</h1>
+
+<h3>
+    {% if form.instance.pk %} 
+        Edit Tweet 
+    {% else %} 
+        Create Tweet 
+    {% endif %}
+</h3>
+
+<form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-warning" type="submit">
+        Submit
+    </button>
+</form>
+
+<a href="{% url 'tweet_list' %}">Back to tweet list</a>
+{% endblock %}
